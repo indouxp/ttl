@@ -1,0 +1,20 @@
+;
+; hostnameに入力されたパスワードで接続する
+;
+
+username = 'indou'
+hostname = '192.168.0.254'
+
+msg = 'Enter Password for user '
+strconcat msg username
+strconcat msg '@'
+strconcat msg hostname
+passwordbox msg 'Get password'
+
+msg = hostname
+strconcat msg ':22 /ssh /auth=password /user='
+strconcat msg username
+strconcat msg ' /passwd='
+strconcat msg inputstr
+
+connect msg
